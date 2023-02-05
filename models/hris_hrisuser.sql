@@ -39,7 +39,7 @@ SELECT
     "{{ var("table_prefix") }}_users".id_employe as employee_number,
     "{{ var("table_prefix") }}_users".type_contrat as contract_type,
     NULL as socio_professional_category,
-    "{{ var("table_prefix") }}_users".status as state
+    "{{ var("table_prefix") }}_users".statut as state
 FROM "{{ var("table_prefix") }}_users"
 LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_users
 ON _airbyte_raw_{{ var("table_prefix") }}_users._airbyte_ab_id = "{{ var("table_prefix") }}_users"._airbyte_ab_id
