@@ -14,6 +14,8 @@ SELECT
       COALESCE("{{ var("table_prefix") }}_users".nom, '') ||
       COALESCE("{{ var("table_prefix") }}_users".prenom, '') ||
       COALESCE("{{ var("table_prefix") }}_users".email, '') ||
+      COALESCE("{{ var("table_prefix") }}_users".date_naissance, '') ||
+      COALESCE("{{ var("table_prefix") }}_users".date_debut_contrat, '') ||
       'user' ||
       'comuto_hris'
     )  as id,
