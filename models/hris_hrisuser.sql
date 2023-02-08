@@ -10,10 +10,10 @@ SELECT
     NOW() as modified,
     md5(
       '{{ var("integration_id") }}' ||
-      "{{ var("table_prefix") }}_users".id_employe ||
-      "{{ var("table_prefix") }}_users".nom ||
-      "{{ var("table_prefix") }}_users".prenom ||
-      "{{ var("table_prefix") }}_users".email ||
+      COALESCE("{{ var("table_prefix") }}_users".id_employe, '') ||
+      COALESCE("{{ var("table_prefix") }}_users".nom, '') ||
+      COALESCE("{{ var("table_prefix") }}_users".prenom, '') ||
+      COALESCE("{{ var("table_prefix") }}_users".email, '') ||
       'user' ||
       'comuto_hris'
     )  as id,
