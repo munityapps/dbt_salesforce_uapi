@@ -45,6 +45,6 @@ SELECT
     "{{ var("table_prefix") }}_account".rating as rating,
     "{{ var("table_prefix") }}_account".website as website,
     NULL as lifecycle
-FROM "{{ var("table_prefix") }}_account"
-LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_account
-ON _airbyte_raw_{{ var("table_prefix") }}_account._airbyte_ab_id = "{{ var("table_prefix") }}_account"._airbyte_ab_id
+FROM "{{ var("schema") }}"."{{ var("table_prefix") }}_account"
+LEFT JOIN "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_account
+ON "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_account._airbyte_ab_id = "{{ var("schema") }}"."{{ var("table_prefix") }}_account"._airbyte_ab_id

@@ -51,8 +51,8 @@
       "{{ var("table_prefix") }}_contact".leadsource as crm_source,
       "{{ var("table_prefix") }}_contact".languages__c as languages,
       NULL as revenue
-  FROM "{{ var("table_prefix") }}_contact"
-  LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_contact
+  FROM "{{ var("schema") }}"."{{ var("table_prefix") }}_contact"
+  LEFT JOIN "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_contact
   ON _airbyte_raw_{{ var("table_prefix") }}_contact._airbyte_ab_id = "{{ var("table_prefix") }}_contact"._airbyte_ab_id
 )
 UNION
@@ -103,7 +103,7 @@ UNION
     "{{ var("table_prefix") }}_lead".leadsource as crm_source,
     NULL as languages,
     NULL as revenue
-  FROM "{{ var("table_prefix") }}_lead"
-  LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_lead
+  FROM "{{ var("schema") }}"."{{ var("table_prefix") }}_lead"
+  LEFT JOIN "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_lead
   ON _airbyte_raw_{{ var("table_prefix") }}_lead._airbyte_ab_id = "{{ var("table_prefix") }}_lead"._airbyte_ab_id
 )

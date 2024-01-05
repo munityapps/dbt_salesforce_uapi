@@ -35,12 +35,12 @@ SELECT
     ("{{ var("table_prefix") }}_opportunity".iswon)::boolean as is_won,
     NULL as mrr,
     NULL as priority
-FROM "{{ var("table_prefix") }}_opportunity"
-LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_opportunity
+FROM "{{ var("schema") }}"."{{ var("table_prefix") }}_opportunity"
+LEFT JOIN "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_opportunity
 ON _airbyte_raw_{{ var("table_prefix") }}_opportunity._airbyte_ab_id = "{{ var("table_prefix") }}_opportunity"._airbyte_ab_id
-LEFT JOIN crm_crmcontact as contact
+LEFT JOIN "{{ var("schema") }}".crm_crmcontact as contact
 ON contact.external_id = ("{{ var("table_prefix") }}_opportunity".contactid)::text
-LEFT JOIN crm_crmcompany as company
+LEFT JOIN "{{ var("schema") }}".crm_crmcompany as company
 ON company.external_id = ("{{ var("table_prefix") }}_opportunity".accountid)::text
-LEFT JOIN crm_crmuser as owner
+LEFT JOIN "{{ var("schema") }}".crm_crmuser as owner
 ON owner.external_id = ("{{ var("table_prefix") }}_opportunity".createdbyid)::text

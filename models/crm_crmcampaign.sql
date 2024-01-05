@@ -28,6 +28,6 @@ SELECT
     NULL as owner_id,
     status as status,
     NULL as start_date
-FROM "{{ var("table_prefix") }}_campaign"
-LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_campaign
+FROM "{{ var("schema") }}"."{{ var("table_prefix") }}_campaign"
+LEFT JOIN "{{ var("schema") }}"._airbyte_raw_{{ var("table_prefix") }}_campaign
 ON _airbyte_raw_{{ var("table_prefix") }}_campaign._airbyte_ab_id = "{{ var("table_prefix") }}_campaign"._airbyte_ab_id
